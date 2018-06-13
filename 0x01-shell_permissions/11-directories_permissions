@@ -1,2 +1,2 @@
 #!/bin/bash
-chown -R a+xX ./
+chmod -R a+xX ./
