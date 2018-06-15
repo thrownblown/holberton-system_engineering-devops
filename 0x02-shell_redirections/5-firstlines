@@ -1,2 +1,2 @@
 #!/bin/bash
-echo "Hello, World"
+head 10 /etc/passwd
