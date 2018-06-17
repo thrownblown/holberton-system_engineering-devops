@@ -1,2 +1,2 @@
 #!/bin/bash
-echo "Hello, World"
+grep -E "^[A-Za-z]" /etc/SSH/sshd_config
