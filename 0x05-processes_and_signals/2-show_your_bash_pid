@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-#A Bash script that displays a list of currently running processes.
+#Bash script that displays line containing the bash word, this allowing you to easily get the PID of your Bash process.
 # shellcheck disable=SC2009
 ps f u -A | grep "bash"
