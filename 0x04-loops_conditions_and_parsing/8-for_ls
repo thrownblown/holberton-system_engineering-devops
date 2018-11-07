@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# lists files in directory without number dash
+L=$(ls)
+for item in $L
+do
+    echo "$item" | cut -d "-" -f2
+done
