@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# lists files in directory without number dash
+#  Bash script that displays: The content of the current directory, in a list format, where only the part of the name after the first dash is displayedlists files in directory without number dash
 L=$(ls)
 for item in $L
 do
