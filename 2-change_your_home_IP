@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-cp /etc/hosts ~/hosts.new
-sed -i 's/127.0.0.1\tlocalhost/127.0.0.2\tlocalhost' ~/hosts.new
-sed -i '2i8.8.8.8\t\tfacebook.com' ~/hosts.new
-mv ~/hosts.new /etc/hosts
-
