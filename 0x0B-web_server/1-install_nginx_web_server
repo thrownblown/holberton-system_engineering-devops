@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+#installs nginx and creates welcome pag
+ssh ubuntu@35.243.217.174 -i ~/.ssh/holberton 'sudo apt-get -y install nginx'
+ssh ubuntu@35.243.217.174 -i ~/.ssh/holberton 'sudo echo "
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+<style>
+    body {
+        width: 35em;
+        margin: 0 auto;
+        font-family: Tahoma, Verdana, Arial, sans-serif;
+    }
+</style>
+</head>
+<body>
+<h1>Holberton School</h1>
+<p><em>Thank you for using nginx.</em></p>
+</body>
+</html>
+" > /usr/share/nginx/html/index.html'
