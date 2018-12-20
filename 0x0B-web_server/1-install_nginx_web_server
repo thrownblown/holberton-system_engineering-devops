@@ -3,3 +3,4 @@
 apt-get -y install nginx
 echo "Holberton School/n" > ~/temp.html
 mv ~/temp.html /usr/share/nginx/html/index.html
+service nginx restart
