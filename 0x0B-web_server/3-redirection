@@ -5,4 +5,4 @@ apt-get -y install nginx
 echo "Holberton School/n" > ~/temp.html
 mv ~/temp.html /usr/share/nginx/html/index.html
 sed -i "s|#error_page 404 /404.html;|location /redirect_me {\n return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;\n}|" /etc/nginx/sites-enabled/default
-service nginx restart
+service nginx start
