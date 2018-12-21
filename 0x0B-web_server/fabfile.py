@@ -4,7 +4,10 @@ import sys
 
 
 user = 'ubuntu'
-host = sys.argv[2]
+try:
+    host = sys.argv[2]
+except IndexError:
+    host = 'localhost'
 
 c = Connection(host, user=user)
 
@@ -13,7 +16,8 @@ c = Connection(host, user=user)
 def pack(local):
     # Creates a tar gzipped archive of the current directory, the name of the
     # archive must be holbertonwebapp.tar.gz and be place in the local dir
-    local.run("tar --exclude='*.tar.gz' -cvzf holbertonwebapp.tar.gz .")
+    local.run("tar --exclude='*.tar.gz' -cvzf ../holbertonwebapp.tar.gz .")
+    local.run("mv ../holbertonwebapp.tar.gz ./holbertonwebapp.tar.gz")
 
 
 @task
@@ -29,4 +33,5 @@ def deploy(local):
 @task
 def clean(local):
     # Deletes the holbertonwebapp.tar.gz on your local machine
-    local.sudo('rm ./holbertonwebapp.tar.gz')
+    local.run('whoami')
+    local.run('rm ./holbertonwebapp.tar.gz')
