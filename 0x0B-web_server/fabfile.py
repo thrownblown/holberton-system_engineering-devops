@@ -1,5 +1,4 @@
-from fabric import task
-from fabric import Connection
+from fabric import task, Connection
 import sys
 
 
