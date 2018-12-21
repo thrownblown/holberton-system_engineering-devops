@@ -3,7 +3,7 @@ from fabric import Connection
 
 
 user = 'ubuntu'
-c = Connection(host='35.243.217.174', user=user)
+c = Connection(user=user)
 
 
 @task
