@@ -33,5 +33,4 @@ def deploy(local):
 @task
 def clean(local):
     # Deletes the holbertonwebapp.tar.gz on your local machine
-    local.run('whoami')
     local.run('rm ./holbertonwebapp.tar.gz')
