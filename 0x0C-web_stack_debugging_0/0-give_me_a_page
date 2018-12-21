@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# installs apache and setup index.html
+apt-get install -y apache2
+echo "Holberton School" > /var/www/html/index.html
+echo "HttpProtocolOptions Unsafe" >> /etc/apache2/apache2.conf
+service apache2 restart
