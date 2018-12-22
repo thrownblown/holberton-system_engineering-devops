@@ -1,35 +1,31 @@
-from fabric import task, Connection
+from fabric.api import *
 import sys
 
 
-user = 'ubuntu'
-try:
-    host = sys.argv[2]
-except IndexError:
-    host = 'localhost'
-
-c = Connection(host, user=user)
+env.user = 'ubuntu'
 
 
 @task
-def pack(local):
+def pack():
     # Creates a tar gzipped archive of the current directory, the name of the
     # archive must be holbertonwebapp.tar.gz and be place in the local dir
-    local.run("tar --exclude='*.tar.gz' -cvzf ../holbertonwebapp.tar.gz .")
-    local.run("mv ../holbertonwebapp.tar.gz ./holbertonwebapp.tar.gz")
+    local("tar --exclude='*.tar.gz' -cvzf ../holbertonwebapp.tar.gz .")
+    local("mv ../holbertonwebapp.tar.gz ./holbertonwebapp.tar.gz")
 
 
 @task
-def deploy(local):
+def deploy():
     # Uploads the archive to the remote server in the directory /tmp/
     # Creates the directory /tmp/holbertonwebapp
     # Untars the holbertonwebapp.tar.gz archive in /tmp/holbertonwebapp
-    c.run('mkdir -p /tmp/holbertonwebapp')
-    c.put('holbertonwebapp.tar.gz', remote='/tmp/')
-    c.run('tar -C /tmp/holbertonwebapp -xzf /tmp/holbertonwebapp.tar.gz')
+    run('mkdir -p /tmp/holbertonwebapp')
+    with cd('/tmp'):
+        put('holbertonwebapp.tar.gz')
+    run('tar -C /tmp/holbertonwebapp -xzf /tmp/holbertonwebapp.tar.gz')
+    # run('ls -l /tmp/holbertonwebapp')
 
 
 @task
-def clean(local):
+def clean():
     # Deletes the holbertonwebapp.tar.gz on your local machine
-    local.run('rm ./holbertonwebapp.tar.gz')
+    local('rm ./holbertonwebapp.tar.gz')
