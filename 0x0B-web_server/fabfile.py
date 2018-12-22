@@ -9,7 +9,7 @@ env.user = 'ubuntu'
 def pack():
     # Creates a tar gzipped archive of the current directory, the name of the
     # archive must be holbertonwebapp.tar.gz and be place in the local dir
-    local("tar --exclude='*.tar.gz' -cvzf ../holbertonwebapp.tar.gz .")
+    local("tar --exclude='*.tar.gz' -czf ../holbertonwebapp.tar.gz .")
     local("mv ../holbertonwebapp.tar.gz ./holbertonwebapp.tar.gz")
 
 
