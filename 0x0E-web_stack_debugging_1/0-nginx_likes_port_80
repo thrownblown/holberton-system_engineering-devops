@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# fixes ngnix
+apt-get install -y lsof
+kill $(lsof -t -i:8080)
+sed -i "s|8080|80|" /etc/nginx/sites-enabled/default
+service nginx restart
