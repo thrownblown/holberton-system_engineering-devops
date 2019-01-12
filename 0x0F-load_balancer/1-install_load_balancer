@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# installs ha-proxy load balancer
+sed -i '$ a deb http://archive.ubuntu.com/ubuntu trusty-backports main universe' /etc/apt/sources.list.d/backports.list
+apt-get update -y
+apt-get upgrade -y
+apt-get install haproxy=1.5.\* -t trusty-backports
+sed -i '$ a ENABLED=1\n' /etc/default/haproxy
+sed -i '$ a listen appname :80\nmode http\nbalance roundrobin\nserver gc-390-web-01-1545120396 35.243.217.174:80 check\nserver gc-390-web-02-1547194084 34.73.238.147:80 check\n' /etc/haproxy/haproxy.cfg
+service haproxy restart
