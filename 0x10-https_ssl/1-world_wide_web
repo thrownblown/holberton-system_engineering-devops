@@ -1,4 +1,18 @@
 #!/bin/bash
 #The subdomain [SUB_DOMAIN] is a [RECORD_TYPE] record and points to [DESTINATION]
-#When only the parameter domain is provided, display information for its subdomains www, lb-01, web-01 and web-02 - in this specific order
-#When passing domain and subdomain parameters, display information for the specified subdomain
+
+
+if [ "$#" -eq 2 ]
+	then
+		declare -a DOMAINS=("$2")
+else
+	declare -a DOMAINS=("www" "lb-01" "web-01" "web-02")
+fi
+
+for D in "${DOMAINS[@]}"
+do
+	DIG=$(dig +nocmd +noall +answer "$D.$1" | awk 'FNR==1 {print}')
+	DREC=$(echo "$DIG" | awk '{print $(NF-1)}')
+	DADR=$(echo "$DIG" | awk '{print $(NF-0)}')
+	echo "The subdomain $D is a $DREC record and points to $DADR"	
+done
