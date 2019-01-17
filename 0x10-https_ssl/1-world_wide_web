@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #The subdomain [SUB_DOMAIN] is a [RECORD_TYPE] record and points to [DESTINATION]
 function digcheck {
 	if [ "$#" -eq 2 ]
