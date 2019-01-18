@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #nginx must be running as nginx user nginx must be listening on all active IPs on port 8080
-sudo kill $"(netstat -ptnl | grep 8080 | cut -f1 -d'/' | rev | cut -f1 -d' ' | rev)" 
-sudo sed -i 's/80/8080/' /etc/nginx/sites-enabled/default
+sudo kill "$(netstat -ptnl | grep 8080 | cut -f1 -d'/' | rev | cut -f1 -d' ' | rev)" 
+sudo sed -i 's/ 80 / 8080 /' /etc/nginx/sites-enabled/default
 sudo sed -i "1i user nginx;" /etc/nginx/nginx.conf
 sudo chmod 644 /etc/nginx/nginx.conf
 sudo -u nginx service nginx restart
