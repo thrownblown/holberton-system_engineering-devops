@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# dumps the db
+sudo mysqldump -uroot -p"$1" --all-databases > dbdump.sql
+tar -czvf "$(date +%d-%m-%Y)".tar.gz dbdump.sql
