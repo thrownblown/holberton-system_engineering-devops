@@ -51,18 +51,18 @@ skip-external-locking
 key_buffer		= 16M
 max_allowed_packet	= 16M
 thread_stack		= 192K
-thread_cache_size       = 8
+thread_cache_size	= 8
 # This replaces the startup script and checks MyISAM tables if needed
 # the first time they are touched
-myisam-recover         = BACKUP
-#max_connections        = 100
-#table_cache            = 64
-#thread_concurrency     = 10
+myisam-recover		= BACKUP
+#max_connections	= 100
+#table_cache		= 64
+#thread_concurrency	= 10
 #
 # * Query Cache Configuration
 #
 query_cache_limit	= 1M
-query_cache_size        = 16M
+query_cache_size	= 16M
 #
 # * Logging and Replication
 #
@@ -86,7 +86,7 @@ log_error = /var/log/mysql/error.log
 #       other settings you may need to change.
 server-id		= 2
 log_bin			= /var/log/mysql/mysql-bin.log
-relay-log               = /var/log/mysql/mysql-relay-bin.log
+relay-log		= /var/log/mysql/mysql-relay-bin.log
 expire_logs_days	= 10
 max_binlog_size		= 100M
 binlog_do_db		= holberton
