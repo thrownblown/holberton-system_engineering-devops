@@ -21,8 +21,10 @@ if __name__ == "__main__":
     csvname = "{}.csv".format(argv[1])
     with open(csvname, 'w') as csvfile:
         fieldnames = ["userId", "name", "completed", "title"]
-        writer = csv.DictWriter(
-            csvfile, fieldnames=fieldnames, extrasaction='ignore')
+        writer = csv.DictWriter(csvfile,
+                                fieldnames=fieldnames,
+                                extrasaction='ignore',
+                                quoting=csv.QUOTE_ALL)
         for task in todo_data:
             task["name"] = user_data.get("username")
             writer.writerow(task)
