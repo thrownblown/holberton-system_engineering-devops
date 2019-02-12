@@ -12,7 +12,7 @@ if __name__ == "__main__":
     req = requests.get(user_url)
     user_data = req.json()
 
-    print("Employee {} ".format(user_data['name']), end="")
+    print("Employee {} ".format(user_data.get('name')), end="")
 
     done_todo = (
         "https://jsonplaceholder.typicode.com/todos?userId={}&completed=true"
@@ -30,5 +30,4 @@ if __name__ == "__main__":
     print("/{}):".format(len(todo_data)))
 
     for task in complete_todo_data:
-        print("\t {}".format(task["title"]))
-        pprint.pprint(task)
+        print("\t {}".format(task.get("title")))
