@@ -20,7 +20,11 @@ if __name__ == "__main__":
     todo_data = req.json()
 
     todo_data = {argv[1]: [
-        dict(item, **{'username': user_data["username"]}) for item in todo_data
+        {
+            "username": user_data.get("username"),
+            "task": item.get("title"),
+            "completed": item.get("completed")
+        } for item in todo_data
     ]}
 
     jsonname = "{}.json".format(argv[1])

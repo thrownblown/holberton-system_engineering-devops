@@ -18,9 +18,13 @@ if __name__ == "__main__":
 
         todo_data = req.json()
 
-        final_data[user["id"]] = [
-            dict(item, **{'username': user["username"]}) for item in todo_data
-        ]
+        username = user.get("username")
+
+        final_data[user["id"]] = [{
+            "username": username,
+            "task": item.get("title"),
+            "completed": item.get("completed")
+        } for item in todo_data]
 
     jsonname = "todo_all_employees.json"
     with open(jsonname, 'w') as outfile:
