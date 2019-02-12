@@ -3,9 +3,9 @@
 Using what you did in the task #0, extend your Python script to export
 data in the CSV format
 """
+from sys import argv
 import csv
 import requests
-from sys import argv
 
 
 if __name__ == "__main__":
