@@ -24,5 +24,5 @@ if __name__ == "__main__":
         writer = csv.DictWriter(
             csvfile, fieldnames=fieldnames, extrasaction='ignore')
         for task in todo_data:
-            task["name"] = user_data["username"]
+            task["name"] = user_data.get("username")
             writer.writerow(task)
