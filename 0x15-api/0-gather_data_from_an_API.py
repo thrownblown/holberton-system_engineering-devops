@@ -3,8 +3,8 @@
 The script must accept an integer as a parameter, which is the employee ID
 The script must display on the standard output the employee TODO list
 """
-from sys import argv
 import requests
+from sys import argv
 
 
 if __name__ == "__main__":
