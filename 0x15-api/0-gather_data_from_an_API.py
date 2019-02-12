@@ -3,19 +3,16 @@
 The script must accept an integer as a parameter, which is the employee ID
 The script must display on the standard output the employee TODO list
 """
-from sys import argv
 import requests
+from sys import argv
 
 
 if __name__ == "__main__":
-    if len(argv) != 2:
-        print("0-gather_data_from_an_API.py <user_id>")
-        return
     user_url = "https://jsonplaceholder.typicode.com/users/{}".format(argv[1])
     req = requests.get(user_url)
     user_data = req.json()
 
-    print("Employee {} ".format(user_data.get("name")), end="")
+    print("Employee {} ".format(user_data['name']), end="")
 
     done_todo = (
         "https://jsonplaceholder.typicode.com/todos?userId={}&completed=true"
@@ -33,5 +30,5 @@ if __name__ == "__main__":
     print("/{}):".format(len(todo_data)))
 
     for task in complete_todo_data:
-        print("\t {}".format(task.get("title")))
+        print("\t {}".format(task["title"]))
         pprint.pprint(task)

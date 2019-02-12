@@ -3,15 +3,12 @@
 Using what you did in the task #0, extend your Python script to export
 data in the CSV format
 """
-from sys import argv
 import csv
 import requests
+from sys import argv
 
 
 if __name__ == "__main__":
-    if len(argv) != 2:
-        print("1-export_to_CSV.py <user_id>")
-        return
     user_url = "https://jsonplaceholder.typicode.com/users/{}".format(argv[1])
     req = requests.get(user_url)
     user_data = req.json()
@@ -27,5 +24,5 @@ if __name__ == "__main__":
         writer = csv.DictWriter(
             csvfile, fieldnames=fieldnames, extrasaction='ignore')
         for task in todo_data:
-            task["name"] = user_data.get("username")
+            task["name"] = user_data["username"]
             writer.writerow(task)
