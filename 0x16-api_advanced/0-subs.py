@@ -4,10 +4,14 @@ import requests
 
 
 def number_of_subscribers(subreddit):
-    """ returns the number of subscribers  """
+    """ returns the number of subscribers
+    Arguments:
+        subreddit: subreddit to search
+    """
     url = 'https://reddit.com/r/{}/about.json'.format(subreddit)
     headers = requests.utils.default_headers()
     headers.update({'User-Agent': 'holberbot'})
+    headers.update({'Content-Type': 'application/json'})
     data = requests.get(url, headers=headers, allow_redirects=True).json()
     if 'subscribers' in data['data']:
         return data['data']['subscribers']
