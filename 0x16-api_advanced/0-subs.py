@@ -8,7 +8,7 @@ def number_of_subscribers(subreddit):
     url = 'https://reddit.com/r/{}/about.json'.format(subreddit)
     headers = requests.utils.default_headers()
     headers.update({'User-Agent': 'holberbot'})
-    data = requests.get(url, headers=headers, allow_redirects=True).json()
+    data = requests.get(url, headers=headers, allow_redirects=False).json()
     if 'subscribers' in data['data']:
         return data['data']['subscribers']
     return 0
