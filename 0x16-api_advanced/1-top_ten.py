@@ -8,7 +8,7 @@ def top_ten(subreddit):
     url = 'https://reddit.com/r/{}/hot.json'.format(subreddit)
     headers = requests.utils.default_headers()
     headers.update({'User-Agent': 'holberbot'})
-    data = requests.get(url, headers=headers, allow_redirects=False).json()
+    data = requests.get(url, headers=headers, allow_redirects=True).json()
     if len(data['data']):
         for i in range(10):
             print(data['data']['children'][i]['data']['title'])
