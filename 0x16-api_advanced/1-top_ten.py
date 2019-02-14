@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """ queries the Reddit API and 10 top posts  """
 import requests
+from json.decoder import JSONDecodeError
 
 
 def top_ten(subreddit):
@@ -8,9 +9,11 @@ def top_ten(subreddit):
     url = 'https://reddit.com/r/{}/hot.json'.format(subreddit)
     headers = requests.utils.default_headers()
     headers.update({'User-Agent': 'holberbot'})
-    data = requests.get(url, headers=headers, allow_redirects=False).json()
-    if len(data['data']):
+    try:
+        data = requests.get(url, headers=headers, allow_redirects=False).json()
         for i in range(10):
             print(data['data']['children'][i]['data']['title'])
-    else:
+    except KeyError:
+        print('None')
+    except JSONDecodeError:
         print('None')
