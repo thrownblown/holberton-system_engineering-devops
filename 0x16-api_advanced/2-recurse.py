@@ -19,7 +19,7 @@ def recurse(subreddit, hot_list=[]):
     if data.get('children'):
         hot_list += [ch.get('data').get('title')
                      for ch in data.get('children')]
-    if data.get('aftter'):
+    if data.get('after'):
         hot_list.append(data.get('after'))
         return recurse(subreddit, hot_list=hot_list)
     if hot_list:
