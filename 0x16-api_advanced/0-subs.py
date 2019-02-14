@@ -9,7 +9,7 @@ def number_of_subscribers(subreddit):
     headers = requests.utils.default_headers()
     headers.update({'User-Agent': 'holberbot-subs'})
 
-    data = requests.get(url, headers=headers, allow_redirects=False)
+    data = requests.get(url, headers=headers, allow_redirects=True)
     if data.status_code <= 300:
         data = data.json()
         return data['data']['subscribers']
