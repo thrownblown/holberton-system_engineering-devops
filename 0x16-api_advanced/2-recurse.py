@@ -1,11 +1,10 @@
 #!/usr/bin/python3
-""" queries the Reddit API and 10 top posts  """
+""" queries the Reddit API returns the entire hot list recursivley  """
 import requests
 
 
 def recurse(subreddit, hot_list=[]):
-    """ returns the number of subscribers  """
-    # import pdb; pdb.set_trace()
+    """ returns the whole hot list  """
     if len(hot_list):
         url = 'https://reddit.com/r/{}/hot.json?after={}'
         url = url.format(subreddit, hot_list.pop(-1))
