@@ -15,10 +15,11 @@ def recurse(subreddit, hot_list=[]):
     headers.update({'User-Agent': 'holberbot'})
     data = requests.get(url, headers=headers, allow_redirects=True)
     if data.status_code <= 300:
-        data = data.json()
-    if data.get('after'):
+        data = data.json().get('data')
+    if data.get('children'):
         hot_list += [ch.get('data').get('title')
                      for ch in data.get('children')]
+    if data.get('aftter'):
         hot_list.append(data.get('after'))
         return recurse(subreddit, hot_list=hot_list)
     if hot_list:
