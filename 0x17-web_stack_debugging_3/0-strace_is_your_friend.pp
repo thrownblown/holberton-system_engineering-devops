@@ -1,9 +1,4 @@
 # fix settings file
-file { '/var/www/html/wp-settings.php'
-  ensure => present,
-}->
-file_line { 'class-wp-locale.phpp'
-  path => '/var/www/html/wp-settings.php',
-  line => '/class-wp-locale.php',
-  match => '/class-wp-locale.phpp',
+exec { 'modify_file':
+  command => "/bin/sed -i \'s/class-wp-locale.phpp/class-wp-locale.php/\' /var/www/html/wp-settings.php"
 }
